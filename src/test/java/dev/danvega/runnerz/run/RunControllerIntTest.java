@@ -2,7 +2,6 @@ package dev.danvega.runnerz.run;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
@@ -62,10 +61,11 @@ class RunControllerIntTest {
                 .retrieve()
                 .toBodilessEntity();
 
-        assertEquals(201, newRun.getStatusCodeValue());
+        assertEquals(201, newRun.getStatusCode().value());
     }
 
     @Test
+    // @Disabled
     void shouldUpdateExistingRun() {
         Run run = restClient.get().uri("/api/runs/1").retrieve().body(Run.class);
 
@@ -75,7 +75,7 @@ class RunControllerIntTest {
                 .retrieve()
                 .toBodilessEntity();
 
-        assertEquals(204, updatedRun.getStatusCodeValue());
+        assertEquals(204, updatedRun.getStatusCode().value());
     }
 
     @Test
@@ -85,7 +85,7 @@ class RunControllerIntTest {
                 .retrieve()
                 .toBodilessEntity();
 
-        assertEquals(204, run.getStatusCodeValue());
+        assertEquals(204, run.getStatusCode().value());
     }
 
 }

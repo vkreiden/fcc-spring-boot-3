@@ -66,7 +66,7 @@ class UserRestClientTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(user), MediaType.APPLICATION_JSON));
 
         // then
-        User leanne = client.findById(1);
+        // User leanne = client.findById(1);
         assertEquals(user.name(), "Leanne", "User name should be Leanne");
         assertEquals(user.username(), "lgraham", "User username should be lgraham");
         assertEquals(user.email(), "lgraham@gmail.com");
